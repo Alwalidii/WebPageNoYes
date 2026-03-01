@@ -53,7 +53,7 @@ askNo.addEventListener("click", function() {
         noClickedOnce = true;
     } else {
         document.querySelector("#page2 h1").innerText =
-            "الله عليج حلوة؟";
+            "لا الله عليج حلوة؟";
 
         askImage.src = "img2.jpg"; // second NO click image
         askNo.style.display = "none";
@@ -76,3 +76,4 @@ function celebrate() {
         document.body.appendChild(confetti);
     }
 }
+
