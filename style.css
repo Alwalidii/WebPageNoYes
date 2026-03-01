@@ -1,4 +1,3 @@
-/* ===== Body & Typography ===== */
 
 body {
     display: flex;
@@ -29,7 +28,6 @@ body {
 }
 
 
-/* ===== Video / Images ===== */
 
 #myVideo {
     width: 100%;
@@ -48,7 +46,6 @@ body {
 }
 
 
-/* ===== Heading ===== */
 
 h1 {
     font-weight: 500;
@@ -58,7 +55,6 @@ h1 {
 }
 
 
-/* ===== Buttons ===== */
 
 .buttons {
     display: flex;
@@ -99,7 +95,6 @@ button:hover {
 }
 
 
-/* ===== Confetti ===== */
 
 .confetti {
     position: fixed;
@@ -117,3 +112,4 @@ button:hover {
         opacity: 0;
     }
 }
+
