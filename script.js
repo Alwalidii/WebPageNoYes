@@ -11,9 +11,8 @@ const askImage = document.getElementById("askImage");
 
 let noClickedOnce = false;
 
-// Runaway first "No" button (only when hovered)
 noBtn.addEventListener("mouseenter", function() {
-    noBtn.style.position = "absolute"; // only while moving
+    noBtn.style.position = "absolute";
 
     const buttonWidth = noBtn.offsetWidth;
     const buttonHeight = noBtn.offsetHeight;
@@ -28,7 +27,6 @@ noBtn.addEventListener("mouseenter", function() {
     noBtn.style.top = randomY + "px";
 });
 
-// First Yes click
 yesBtn.addEventListener("click", function() {
     document.querySelector("#page1 h1").innerText =
         "فدوةةةة اختاريتي بنفسج ✨";
@@ -39,7 +37,6 @@ yesBtn.addEventListener("click", function() {
     }, 2000);
 });
 
-// Second page logic
 askYes.addEventListener("click", function() {
     celebrate();
 });
@@ -49,18 +46,17 @@ askNo.addEventListener("click", function() {
         document.querySelector("#page2 h1").innerText =
             "شجاي تحجين؟؟؟ حلوة؟؟";
 
-        askImage.src = "img3.jpg"; // first NO click image
+        askImage.src = "img3.jpg";
         noClickedOnce = true;
     } else {
         document.querySelector("#page2 h1").innerText =
             "لا الله عليج حلوة؟";
 
-        askImage.src = "img2.jpg"; // second NO click image
+        askImage.src = "img2.jpg";
         askNo.style.display = "none";
     }
 });
 
-// 🎉 Celebration Function
 function celebrate() {
     document.querySelector("#page2 h1").innerText = "فدوةةةةةة💍💙";
 
@@ -76,4 +72,5 @@ function celebrate() {
         document.body.appendChild(confetti);
     }
 }
+
 
