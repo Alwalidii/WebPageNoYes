@@ -1,35 +1,78 @@
-const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
-const result = document.getElementById("result");
-const responseImg = document.getElementById("responseImg");
+const yesBtn = document.getElementById("yesBtn");
 
-let noClickCount = 0; // Track how many times No was clicked
+const askYes = document.getElementById("askYes");
+const askNo = document.getElementById("askNo");
 
-yesBtn.addEventListener("click", function() {
-    result.textContent = "You clicked Yes! 😎";
-    result.style.color = "green";
+const page1 = document.getElementById("page1");
+const page2 = document.getElementById("page2");
 
-    responseImg.src = "yes.jpg";
-    responseImg.style.display = "block";
+const askImage = document.getElementById("askImage");
 
-    noClickCount = 0; // Reset No counter if Yes is clicked
+let noClickedOnce = false;
+
+// Runaway first "No" button (only when hovered)
+noBtn.addEventListener("mouseenter", function() {
+    noBtn.style.position = "absolute"; // only while moving
+
+    const buttonWidth = noBtn.offsetWidth;
+    const buttonHeight = noBtn.offsetHeight;
+
+    const maxX = window.innerWidth - buttonWidth;
+    const maxY = window.innerHeight - buttonHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
 });
 
-noBtn.addEventListener("click", function() {
-    noClickCount++;
+// First Yes click
+yesBtn.addEventListener("click", function() {
+    document.querySelector("#page1 h1").innerText =
+        "فدوةةةة اختاريتي بنفسج ✨";
 
+    setTimeout(function() {
+        page1.style.display = "none";
+        page2.classList.remove("hidden");
+    }, 2000);
+});
 
-    responseImg.style.display = "block";
+// Second page logic
+askYes.addEventListener("click", function() {
+    celebrate();
+});
 
-    if (noClickCount === 1) {
+askNo.addEventListener("click", function() {
+    if (!noClickedOnce) {
+        document.querySelector("#page2 h1").innerText =
+            "شجاي تحجين؟؟؟ حلوة؟؟";
 
-        result.textContent = "No! 😢";
-        result.style.color = "red";
-        responseImg.src = "no1.jpg"; // first No image
+        askImage.src = "img3.jpg"; // first NO click image
+        noClickedOnce = true;
     } else {
+        document.querySelector("#page2 h1").innerText =
+            "الله عليج حلوة؟";
 
-        result.textContent = "No?";
-        result.style.color = "red";
-        responseImg.src = "no2.jpg"; // second No image
+        askImage.src = "img2.jpg"; // second NO click image
+        askNo.style.display = "none";
     }
 });
+
+// 🎉 Celebration Function
+function celebrate() {
+    document.querySelector("#page2 h1").innerText = "فدوةةةةةة💍💙";
+
+    askYes.style.display = "none";
+    askNo.style.display = "none";
+
+    for (let i = 0; i < 120; i++) {
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.animationDelay = Math.random() * 2 + "s";
+        confetti.style.backgroundColor = ["#00bcd4", "#ff4081", "#ffffff", "#00838f"][Math.floor(Math.random() * 4)];
+        document.body.appendChild(confetti);
+    }
+}
