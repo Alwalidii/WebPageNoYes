@@ -3,18 +3,36 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Yes or No</title>
+    <title>لولو البدري</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.jpg">
 </head>
 
 <body>
 
-    <h1>Do ya luv this page?</h1>
-    <p id="result"></p>
-    <img id="responseImg" src="" alt="Response Image">
-    <div class="buttons">
-        <button id="yesBtn" class="yes">Yes</button>
-        <button id="noBtn" class="no">No</button>
+    <!-- First Screen -->
+    <div id="page1">
+        <video autoplay loop muted id="myVideo">
+            <source src="video.webm" type="video/webm">
+        </video>
+
+        <h1>☕︎ شلونج لولو</h1>
+
+        <div class="buttons">
+            <button id="yesBtn">بخير</button>
+            <button id="noBtn">موبخير</button>
+        </div>
+    </div>
+
+    <!-- Second Screen (Hidden at first) -->
+    <div id="page2" class="hidden">
+        <img src="img1.jpg" class="ask-img" id="askImage" alt="Cute Pic">
+        <h1>شنو رايج بالصفحة ؟ 💙</h1>
+
+        <div class="buttons" id="askButtons">
+            <button id="askYes">تخبل</button>
+            <button id="askNo">مو حلوة</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
