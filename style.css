@@ -1,13 +1,11 @@
-
 body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Lateef', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #ffe4ec 0%, #ffd6e8 100%);
-    color: #111;
+    background: linear-gradient(101deg, #ff87ab, #ffa7cd);
     overflow: hidden;
 }
 
@@ -16,6 +14,7 @@ body {
 }
 
 #page1,
+#askPage,
 #page2 {
     text-align: center;
     max-width: 480px;
@@ -24,17 +23,13 @@ body {
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    transition: all 0.5s ease;
 }
-
-
 
 #myVideo {
     width: 100%;
     max-width: 360px;
     border-radius: 15px;
     margin-bottom: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .ask-img {
@@ -42,59 +37,205 @@ body {
     max-width: 300px;
     border-radius: 20px;
     margin-bottom: 25px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
-
-
 
 h1 {
-    font-weight: 500;
     font-size: 1.8rem;
     margin-bottom: 35px;
-    color: #222;
 }
-
-
 
 .buttons {
     display: flex;
     justify-content: center;
     gap: 25px;
-    margin-top: 10px;
 }
 
 button {
     padding: 14px 30px;
     font-size: 18px;
-    font-weight: 500;
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(5px);
-    color: white;
+    color: rgb(0, 0, 0);
 }
-
-button:hover {
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
-}
-
-
-/* ===== Button Colors ===== */
 
 #yesBtn,
 #askYes {
-    background: linear-gradient(135deg, #5cd1ff, #00a8ff);
+    background: linear-gradient(135deg, #f15cff, #ffffff);
 }
 
 #noBtn,
 #askNo {
-    background: linear-gradient(135deg, #ff7f7f, #ff3b3b);
+    background: linear-gradient(135deg, #815eff, #ffffff);
 }
 
+.spotify-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    height: 80px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 228, 236, 0.9);
+    z-index: 999;
+}
 
+.spotify-player iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+#loveLetter {
+    display: none;
+    position: fixed;
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffe4ec, #ffd6e8);
+}
+
+.envelope-wrapper {
+    position: relative;
+    perspective: 1000px;
+}
+
+.envelope {
+    position: relative;
+    width: 350px;
+    height: 220px;
+    background: #f5eddc;
+    border-radius: 6px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #e9dfc8;
+    clip-path: polygon(0 0, 50% 60%, 100% 0);
+    transform-origin: top;
+    animation: openFlap 1.2s forwards;
+    z-index: 2;
+}
+
+.heart {
+    position: absolute;
+    top: 75px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 28px;
+    background: #e63946;
+    transform: translateX(-50%) rotate(45deg);
+    z-index: 3;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: #e63946;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -14px;
+    left: 0;
+}
+
+.heart::after {
+    left: -14px;
+    top: 0;
+}
+
+.paper {
+    position: absolute;
+    left: 50%;
+    bottom: -200px;
+    transform: translateX(-50%) scale(1);
+    width: 90%;
+    height: 200px;
+    background: white;
+    border-radius: 4px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 22px;
+    line-height: 1.6;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+    overflow-y: auto;
+    overflow-x: hidden;
+    animation: slidePaper 1.6s 1s forwards ease, zoomPaper 0.8s 2.6s forwards ease;
+}
+
+.paper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.paper::-webkit-scrollbar-thumb {
+    background: #ff9ecb;
+    border-radius: 10px;
+}
+
+.part {
+    text-align: center;
+}
+
+@keyframes zoomPaper {
+    from {
+        transform: translateX(-50%) scale(1);
+    }
+    to {
+        transform: translateX(-50%) scale(1.2);
+    }
+}
+
+@keyframes openFlap {
+    to {
+        transform: rotateX(180deg);
+    }
+}
+
+@keyframes slidePaper {
+    to {
+        bottom: 40px;
+    }
+}
+
+.stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: white;
+    clip-path: polygon( 50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
 
 .confetti {
     position: fixed;
@@ -113,3 +254,60 @@ button:hover {
     }
 }
 
+.progress-container {
+    position: absolute;
+    top: 10px;
+    left: 5%;
+    width: 90%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #ff5fbc;
+    transition: width 0.1s linear;
+}
+
+#spotifyPlayer {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    height: 80px;
+    z-index: 1000;
+    transition: all 1s ease;
+    animation: floatSpotify 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatSpotify {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+#flower {
+    animation: floatFlower 3s infinite alternate ease-in-out;
+}
+
+@keyframes floatFlower {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(10deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
