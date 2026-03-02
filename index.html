@@ -4,18 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <title>لولو البدري</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lateef&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon.jpg">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
+    <div class="spotify-player" id="spotifyPlayer">
+        <iframe src="https://open.spotify.com/embed/track/4bHFg7c0wOhcvK79zvDunP?utm_source=generator&theme=0" width="300" height="80" allow="encrypted-media" allowtransparency="true" loading="lazy">
+        </iframe>
+    </div>
+    <img src="flwr.png" id="flower" style="position: fixed; top: 20px; left: 20px; width: 80px; height: 80px; z-index: 900;">
     <div id="page1">
         <video autoplay loop muted id="myVideo">
-            <source src="video.webm" type="video/webm">
-        </video>
+        <source src="video.webm" type="video/webm">
+    </video>
 
-        <h1>☕︎ شلونج لولو</h1>
+        <h1>✨☕︎ شلونج لولو</h1>
 
         <div class="buttons">
             <button id="yesBtn">بخير</button>
@@ -23,13 +28,56 @@
         </div>
     </div>
 
-    <div id="page2" class="hidden">
-        <img src="img1.jpg" class="ask-img" id="askImage" alt="Cute Pic">
-        <h1>شنو رايج بالصفحة ؟ 💙</h1>
+    <div id="askPage" class="hidden">
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
 
-        <div class="buttons" id="askButtons">
+        <img src="date1.jpg" class="ask-img" id="dateImage">
+        <h1 id="dateText">نطلع سوا؟ 🤍</h1>
+    </div>
+
+    <div id="page2" class="hidden">
+        <img src="img1.jpg" class="ask-img" id="askImage">
+        <h1>شنو رايج بالصفحة ؟</h1>
+
+        <div class="buttons">
             <button id="askYes">تخبل</button>
             <button id="askNo">مو حلوة</button>
+        </div>
+    </div>
+
+
+    <div id="loveLetter" class="hidden">
+        <div class="stars"></div>
+        <div class="envelope-wrapper part" id="letterPart1">
+            <div class="envelope">
+                <div class="flap"></div>
+                <div class="heart"></div>
+                <div class="paper">
+                    <p>
+                        أدري آخر فترة ما جانت أحسن فترة، بس مثل ما تشوفين، كل شيء يتحسن شوي شوي. لا تفكرين هواي بأشياء ثانوية، ولا تخلين العائق يكون إنتي. تكدرين تصيرين وتسوين أي شيء يعجبج: تصيرين مبرمجة، مصممة، خياطة (حياكة)، رسامة، وأي شي تحطينه ببالج. الشي الوحيد اللي واثق
+                        بيه هو: إنتي تكدرين. إنتي إنسانة طيبة، وبنية مرات تنسى نفسها ومنو هي. ورغم كل شي يصير وياج، تكدر تلاحظ تحاولين تكونين إيجابية. كملي هالشي، وتذكري دوم من تحسين نفسج بمكان موحلو: إنتي تستاهلين كل الخير وراحة البال. حاولي تخلين كل
+                        خيار بحياتج تجاه راحة بالج، وشنو أحسن شي تستاهله لارا المستقبلية. محد مهم غيرج انتي. حياتج هاي مو حياة هاي وذاك. أتمنى تكونين بخير، وكل شي بدربج يكون أحسن، وتحلي مشاكلج، سواء اللي تحاجين عنها أو اللي متحاجين وضامتها. تذكري ميشو
+                        وفستق يحتاجونج.
+                    </p>
+                    <button id="okLetter1">يلا خوش</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="envelope-wrapper part hidden" id="letterPart2">
+            <div class="envelope">
+                <div class="flap"></div>
+                <div class="heart"></div>
+                <div class="paper">
+                    <p>
+                        يلا خوش؟؟؟ خوش. بعد شسوي تعودت. شكرا لأنك تختارين تحاجيني رغم مرات اكول اشياء غلط او ماعرف اواسي او مجرد اسكت واسمع بس وي الوقت اتعلم؟ وهم رغم شكد أنا "توكسك؟" مثل متكولين. من الناس القليلة اللي ما عندي مشكلة أحاجيهم لوقت طويل، لأني أعرف إذا سولفت شي
+                        سخيف، ما راح تندميني حجيته. رغم مرات تحاولين، بس ناء آءه، ما تكدرين تخليني أبطل أصير سخيف. بأي وقت تحسين إنتِ وحيدة، تعالي حاجيني. فارغ أنا عندي هواي وقت ماعندي مشكلة اسخت وياج لا تستحين.
+                    </p>
+                    <button id="okLetter2">هم خوش</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -37,4 +85,3 @@
 </body>
 
 </html>
-
